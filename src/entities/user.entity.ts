@@ -17,14 +17,14 @@ class User {
   @Column({ default: false })
   admin: boolean;
 
-  @CreateDateColumn()
-  createdAt: Date;
+  @CreateDateColumn({ type: "date" })
+  createdAt?: string | Date;
 
-  @UpdateDateColumn()
-  updatedAt: Date;
+  @UpdateDateColumn({ type: "date" })
+  updatedAt?: string | Date;
 
-  @DeleteDateColumn({ nullable: true })
-  deletedAt: Date;
+  @DeleteDateColumn({ type: "date", nullable: true })
+  deletedAt?: string | Date | undefined | null;
 }
 
-export default User
+export default User;

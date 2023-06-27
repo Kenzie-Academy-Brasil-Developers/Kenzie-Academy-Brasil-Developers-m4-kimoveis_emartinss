@@ -1,8 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import RealEstate from "./realEstate.entityt";
 
 @Entity("addresses")
 class Address {
   @PrimaryGeneratedColumn()
+ 
   id: number;
 
   @Column({ length: 45 })

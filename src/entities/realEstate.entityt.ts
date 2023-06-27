@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import Address from "./address.entity";
 
 @Entity("real_estate")
 class RealEstate {
@@ -11,8 +12,9 @@ class RealEstate {
   @Column({ type: "integer" })
   size: number;
 
-  @Column()
-  addressId: number;
+  @OneToOne(() => Address)
+  @JoinColumn()
+  address: Address;
 
   @Column({ type: "integer" })
   categoryId: number;
@@ -27,4 +29,4 @@ class RealEstate {
   updatedAt: Date;
 }
 
-export default RealEstate
+export default RealEstate;
