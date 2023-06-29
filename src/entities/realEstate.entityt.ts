@@ -1,5 +1,16 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import Address from "./address.entity";
+import Category from "./category.entity";
 
 @Entity("real_estate")
 class RealEstate {
@@ -12,21 +23,24 @@ class RealEstate {
   @Column({ type: "integer" })
   size: number;
 
-  @OneToOne(() => Address)
+  @OneToOne(() => Address, (address) => address.id)
   @JoinColumn()
   address: Address;
 
-  @Column({ type: "integer" })
-  categoryId: number;
+  @ManyToOne(() => Category,)
+  @JoinColumn()
+  category: number | (() => string);
 
   @Column({ default: false })
   sold: boolean;
 
-  @CreateDateColumn()
-  createdAt: Date;
+  @CreateDateColumn({type:"date"})
+  createdAt: string;
 
-  @UpdateDateColumn()
-  updatedAt: Date;
+  @UpdateDateColumn({type:"date"})
+  updatedAt: string;
+
+  
 }
 
 export default RealEstate;

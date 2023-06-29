@@ -1,18 +1,20 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import RealEstate from "./realEstate.entityt";
 
 @Entity("schedules")
 class Schedule {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column("date")
+  @Column({ type: "time" })
   date: string;
 
-  @Column("time")
+  @Column({ type: "time" })
   hour: string;
 
-  @Column()
-  realEstateId: number;
+  @OneToOne(() => RealEstate)
+  @JoinColumn()
+  realEstate: number;
 
   @Column()
   userId: number;

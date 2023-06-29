@@ -18,13 +18,13 @@ class User {
   admin: boolean;
 
   @CreateDateColumn({ type: "date" })
-  createdAt?: string | Date;
+  createdAt?: string ;
 
   @UpdateDateColumn({ type: "date" })
-  updatedAt?: string | Date;
+  updatedAt?: string ;
 
   @DeleteDateColumn({ type: "date", nullable: true })
-  deletedAt?: string | Date | undefined | null;
+  deletedAt?: string | undefined | null;
 }
 
 export default User;
