@@ -10,5 +10,5 @@ export interface IrealEstateReturn {
   address: Address;
   size: number;
   value: number | string;
-  category: number;
+  categoryId: { id: number };
 }

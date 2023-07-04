@@ -23,24 +23,22 @@ class RealEstate {
   @Column({ type: "integer" })
   size: number;
 
-  @OneToOne(() => Address, (address) => address.id)
+  @OneToOne(() => Address)
   @JoinColumn()
   address: Address;
 
-  @ManyToOne(() => Category,)
+  @ManyToOne(() => Category)
   @JoinColumn()
-  category: number | (() => string);
+  category: Category;
 
   @Column({ default: false })
   sold: boolean;
 
-  @CreateDateColumn({type:"date"})
+  @CreateDateColumn({ type: "date" })
   createdAt: string;
 
-  @UpdateDateColumn({type:"date"})
+  @UpdateDateColumn({ type: "date" })
   updatedAt: string;
-
-  
 }
 
 export default RealEstate;

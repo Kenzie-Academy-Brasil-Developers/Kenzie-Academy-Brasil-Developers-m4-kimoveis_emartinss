@@ -6,3 +6,4 @@ export const CategoriesSchema = z.object({
 });
 
 export const categorieCreate = CategoriesSchema.omit({ id: true });
+export const categorieId = CategoriesSchema.omit({ name: true });

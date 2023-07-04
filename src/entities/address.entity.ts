@@ -5,19 +5,19 @@ class Address {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 45 })
+  @Column({ type: "varchar", length: 45 })
   street: string;
 
-  @Column({ length: 8 })
+  @Column({ type: "varchar", length: 8 })
   zipCode: string;
 
-  @Column({ length: 7 })
-  number: string;
+  @Column({ type: "varchar", length: 7, nullable: true })
+  number: string | null | undefined;
 
-  @Column({ length: 20 })
+  @Column({ type: "varchar", length: 20 })
   city: string;
 
-  @Column({ length: 2 })
+  @Column({ type: "varchar", length: 2 })
   state: string;
 }
 

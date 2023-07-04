@@ -3,7 +3,7 @@ import { createRealEstateService, readRealEstateService } from "../../services/r
 
 export const createRealEstateController = async (req: Request, res: Response) => {
   const body = res.locals.validated;
-  const newRealEstate = await createRealEstateService(body);
+  const newRealEstate = await createRealEstateService(req.body);
 
   return res.status(201).json(newRealEstate);
 };
