@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import RealEstate from "./realEstate.entityt";
+import Schedule from "./schedules.entity";
 
 @Entity("categories")
 class Category {
@@ -11,6 +12,9 @@ class Category {
 
   @OneToMany(() => RealEstate, (realEstate) => realEstate.category)
   realEstate: RealEstate[];
+
+  // @OneToMany(() => Schedule, (schedule) => schedule.category)
+  // schedule: Schedule;
 }
 
 export default Category;

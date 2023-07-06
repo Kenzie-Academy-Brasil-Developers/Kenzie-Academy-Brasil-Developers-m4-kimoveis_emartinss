@@ -4,7 +4,7 @@ import { createScheduleService, readScheduleService } from "../../services/sched
 export const createScheduleController = async (req: Request, res: Response) => {
   const body = res.locals.validated;
   const userId = res.locals.decoded.sub;
-
+ 
   const schedule = await createScheduleService(body, parseInt(userId));
 
   res.status(201).json(schedule);

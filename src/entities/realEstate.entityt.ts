@@ -11,6 +11,8 @@ import {
 } from "typeorm";
 import Address from "./address.entity";
 import Category from "./category.entity";
+import Schedule from "./schedules.entity";
+import User from "./user.entity";
 
 @Entity("real_estate")
 class RealEstate {
@@ -30,6 +32,10 @@ class RealEstate {
   @ManyToOne(() => Category, (category) => category.realEstate)
   category: Category;
 
+  @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
+  schedules: Schedule[];
+
+  
   @Column({ default: false })
   sold: boolean;
 
