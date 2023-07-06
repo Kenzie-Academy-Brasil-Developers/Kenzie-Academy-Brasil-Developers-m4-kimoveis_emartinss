@@ -18,15 +18,9 @@ export const createRealEstateService = async ({ address, ...body }: IRealEstateC
 
   const createRealEstate = realEstateRepositorys.create(realEstate);
   await realEstateRepositorys.save(createRealEstate);
-  
-  console.log(realEstate);
-  
+
   return createRealEstate;
 };
-
-
-
-
 
 export const readRealEstateService = async () => {
   return realEstateRead.parse(

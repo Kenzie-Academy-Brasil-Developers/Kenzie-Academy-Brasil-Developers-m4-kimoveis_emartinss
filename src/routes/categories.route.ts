@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { createCategoriesController } from "../controllers/categories/categories.conroller";
+import {
+  createCategoriesController,
+  readCategoriesController,
+  readRealEstateByCategoryController,
+} from "../controllers/categories/categories.conroller";
 import { validatedBody } from "../middlewares/validatedBody.middleware";
 import { categorieCreate } from "../schemas/categories.schema";
 import { verifyToken } from "../middlewares/verifyToken.middleware";
@@ -9,3 +13,5 @@ import { checkNameCategorieExist } from "../middlewares/categories/checkUniqueNa
 export const categoriesRoutes: Router = Router();
 
 categoriesRoutes.post("", verifyToken, validateAdmin, validatedBody(categorieCreate), checkNameCategorieExist, createCategoriesController);
+categoriesRoutes.get("/:id/realEstate", readRealEstateByCategoryController);
+categoriesRoutes.get("", readCategoriesController);

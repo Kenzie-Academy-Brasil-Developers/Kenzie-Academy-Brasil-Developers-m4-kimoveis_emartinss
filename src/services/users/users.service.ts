@@ -1,12 +1,10 @@
 import { User } from "../../entities";
 import { IUserCreate, IUserRead, IUserReturn } from "../../interfaces/users/users.interfaces";
-import { hash } from "bcryptjs";
 import { usersRead, usersReturn } from "../../schemas/users.schema";
 import userRepositorys from "../../repositories/user.repositorys";
 
 export const createUserService = async (userBody: IUserCreate): Promise<IUserReturn> => {
-  userBody.password = await hash(userBody.password, 10);
-
+ 
   const newUser: User = userRepositorys.create(userBody);
   await userRepositorys.save(newUser);
 

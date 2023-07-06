@@ -3,7 +3,7 @@ import { createScheduleService, readScheduleService } from "../../services/sched
 
 export const createScheduleController = async (req: Request, res: Response) => {
   const body = res.locals.validated;
-  const userId = res.locals.decoded.sub
+  const userId = res.locals.decoded.sub;
 
   const schedule = await createScheduleService(body, parseInt(userId));
 
@@ -11,7 +11,8 @@ export const createScheduleController = async (req: Request, res: Response) => {
 };
 
 export const readScheduleController = async (req: Request, res: Response) => {
-  const schedule = await readScheduleService();
+  const id = req.params.id;
+  const schedule = await readScheduleService(id);
 
   return res.status(200).json(schedule);
 };

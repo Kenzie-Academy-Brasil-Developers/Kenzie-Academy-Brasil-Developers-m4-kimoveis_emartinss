@@ -27,8 +27,7 @@ class RealEstate {
   @JoinColumn()
   address: Address;
 
-  @ManyToOne(() => Category)
-  @JoinColumn()
+  @ManyToOne(() => Category, (category) => category.realEstate)
   category: Category;
 
   @Column({ default: false })

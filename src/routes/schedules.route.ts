@@ -8,4 +8,4 @@ import { validateAdmin } from "../middlewares/validatedAdmin.middleware";
 export const scheduleRoutes: Router = Router();
 
 scheduleRoutes.post("", verifyToken, validateAdmin, validatedBody(scheduleCreate), createScheduleController);
-scheduleRoutes.get("/realEstate/:id", readScheduleController);
+scheduleRoutes.get("/realEstate/:id", verifyToken, validateAdmin, readScheduleController);
