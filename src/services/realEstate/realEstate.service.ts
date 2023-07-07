@@ -1,10 +1,11 @@
-import { IRealEstateCreate, IrealEstateReturn } from "../../interfaces/realEstate/realEstate.interface";
+import { RealEstate } from "../../entities";
+import { IRealEstateCreate, IRealEstateRead } from "../../interfaces/realEstate/realEstate.interface";
 import addressRepositorys from "../../repositories/address.repositorys";
 import categoriesRepositorys from "../../repositories/categories.repositorys";
 import realEstateRepositorys from "../../repositories/realEstate.repositorys";
 import { realEstateRead } from "../../schemas/realEstate.schema";
 
-export const createRealEstateService = async ({ address, ...body }: IRealEstateCreate): Promise<any> => {
+export const createRealEstateService = async ({ address, ...body }: IRealEstateCreate): Promise<RealEstate> => {
   const saveAddress = addressRepositorys.create(address);
   await addressRepositorys.save(saveAddress);
 
@@ -22,7 +23,7 @@ export const createRealEstateService = async ({ address, ...body }: IRealEstateC
   return createRealEstate;
 };
 
-export const readRealEstateService = async () => {
+export const readRealEstateService = async (): Promise<IRealEstateRead> => {
   return realEstateRead.parse(
     await realEstateRepositorys.find({
       relations: { address: true },

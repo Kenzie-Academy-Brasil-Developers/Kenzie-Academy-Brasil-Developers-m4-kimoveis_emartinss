@@ -35,7 +35,6 @@ class RealEstate {
   @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
   schedules: Schedule[];
 
-  
   @Column({ default: false })
   sold: boolean;
 

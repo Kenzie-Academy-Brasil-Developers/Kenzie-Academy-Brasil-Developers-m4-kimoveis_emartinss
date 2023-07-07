@@ -1,8 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import realEstateRepositorys from "../../repositories/realEstate.repositorys";
-import { Address, RealEstate } from "../../entities";
+import { Address } from "../../entities";
 import AppError from "../../error";
-import addressRepositorys from "../../repositories/address.repositorys";
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 

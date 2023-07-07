@@ -4,9 +4,10 @@ import {
   readCategoriesService,
   readRealEstateByCategoryService,
 } from "../../services/categories/categories.service";
-import { ICategories, ICategoriesCreate } from "../../interfaces/categories/categories.interfaces";
+import { ICategories, ICategoriesCreate, ICategoriesRead } from "../../interfaces/categories/categories.interfaces";
+import { Category } from "../../entities";
 
-export const createCategoriesController = async (req: Request, res: Response) => {
+export const createCategoriesController = async (req: Request, res: Response): Promise<Response> => {
   const body: ICategoriesCreate = res.locals.validated;
 
   const categorie: ICategories = await createCategoriesService(body);
@@ -14,16 +15,16 @@ export const createCategoriesController = async (req: Request, res: Response) =>
   return res.status(201).json(categorie);
 };
 
-export const readCategoriesController = async (req: Request, res: Response) => {
-  const categories = await readCategoriesService();
-console.log(categories)
-  res.status(200).json(categories)
+export const readCategoriesController = async (req: Request, res: Response): Promise<Response | void> => {
+  const categories: ICategoriesRead = await readCategoriesService();
+
+  res.status(200).json(categories);
 };
 
-export const readRealEstateByCategoryController = async (req: Request, res: Response) => {
-  const categorieId = req.params.id;
+export const readRealEstateByCategoryController = async (req: Request, res: Response): Promise<Response | void> => {
+  const categorieId: string = req.params.id;
 
-  const realEstateByCategory = await readRealEstateByCategoryService(categorieId);
+  const realEstateByCategory: Category = await readRealEstateByCategoryService(categorieId);
 
   res.status(200).json(realEstateByCategory);
 };

@@ -15,19 +15,11 @@ class Schedule {
   @Column()
   hour: string;
 
-  @ManyToOne(() => RealEstate, (realEstate)=> realEstate.schedules)
-  // @JoinColumn()
+  @ManyToOne(() => RealEstate, (realEstate) => realEstate.schedules)
   realEstate: RealEstate;
 
   @ManyToOne(() => User)
-  // @JoinColumn()
   user: User;
-
-  // @ManyToOne(() => Category, (category) => category.schedule)
-  // category: Category;
-
-  // @ManyToOne(() => Address, (address) => address.schedule)
-  // address: Address;
 }
 
 export default Schedule;

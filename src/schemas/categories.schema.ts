@@ -5,5 +5,6 @@ export const CategoriesSchema = z.object({
   name: z.string().max(45),
 });
 
+
 export const categorieCreate = CategoriesSchema.omit({ id: true });
-export const categorieId = CategoriesSchema.omit({ name: true });
+export const categorieRead = CategoriesSchema.array()

@@ -8,7 +8,11 @@ export type IRealEstateRead = z.infer<typeof realEstateRead>;
 
 export interface IrealEstateReturn {
   address: Address;
+  createdAt: string;
+  updatedAt: string;
+  id: number;
   size: number;
+  sold: boolean;
   value: number | string;
-  categoryId: { id: number };
+  categoryId: number | null | undefined;
 }

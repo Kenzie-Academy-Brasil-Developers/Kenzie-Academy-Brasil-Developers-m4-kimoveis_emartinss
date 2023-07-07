@@ -3,7 +3,6 @@ import AppError from "../../error";
 import { ILogin, Token } from "../../interfaces/login/login.interface";
 import userRepositorys from "../../repositories/user.repositorys";
 import { sign } from "jsonwebtoken";
-import { IUser } from "../../interfaces/users/users.interfaces";
 import { User } from "../../entities";
 
 export const loginService = async (loginData: ILogin): Promise<Token> => {

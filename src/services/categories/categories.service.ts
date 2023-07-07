@@ -1,8 +1,7 @@
 import { Category } from "../../entities";
 import AppError from "../../error";
-import { ICategories, ICategoriesCreate } from "../../interfaces/categories/categories.interfaces";
+import { ICategories, ICategoriesCreate, ICategoriesRead } from "../../interfaces/categories/categories.interfaces";
 import categoriesRepositorys from "../../repositories/categories.repositorys";
-import realEstateRepositorys from "../../repositories/realEstate.repositorys";
 
 export const createCategoriesService = async (body: ICategoriesCreate): Promise<ICategories> => {
   const categorie: Category = categoriesRepositorys.create(body);
@@ -11,7 +10,7 @@ export const createCategoriesService = async (body: ICategoriesCreate): Promise<
   return categorie;
 };
 
-export const readCategoriesService = async () => {
+export const readCategoriesService = async ():Promise<ICategoriesRead> => {
   return categoriesRepositorys.find();
 };
 
