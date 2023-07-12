@@ -2,7 +2,7 @@ import { z } from "zod";
 import { AddressSchema, addressCreate } from "./address.schema";
 
 export const RealEstateSchema = z.object({
-  id: z.number(),
+  id: z.number().min(1),
   value: z.string().or(z.number()),
   size: z.number().int().positive(),
   address: addressCreate,
