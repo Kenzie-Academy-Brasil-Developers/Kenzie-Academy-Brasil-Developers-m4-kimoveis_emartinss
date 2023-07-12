@@ -9,7 +9,8 @@ import { realEstateRoutes } from "./routes/realEstate.route";
 import { scheduleRoutes } from "./routes/schedules.route";
 
 const app = express();
-app.use(express.json());
+const cors = require("cors");
+app.use(cors({ origin: "http://localhost:5173" }), express.json());
 
 app.use("/users", usersRoutes);
 app.use("/login", loginRoutes);
