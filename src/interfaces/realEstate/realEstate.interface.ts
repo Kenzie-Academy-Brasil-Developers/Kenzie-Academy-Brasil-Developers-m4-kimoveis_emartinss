@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { RealEstateSchema, realEstateCreate, realEstateRead } from "../../schemas/realEstate.schema";
-import { Address } from "../../entities";
+import { Address, Category } from "../../entities";
 
 export type IRealEstate = z.infer<typeof RealEstateSchema>;
 export type IRealEstateCreate = z.infer<typeof realEstateCreate>;
@@ -14,5 +14,5 @@ export interface IrealEstateReturn {
   size: number;
   sold: boolean;
   value: number | string;
-  categoryId: number | null | undefined;
+  category: Category;
 }

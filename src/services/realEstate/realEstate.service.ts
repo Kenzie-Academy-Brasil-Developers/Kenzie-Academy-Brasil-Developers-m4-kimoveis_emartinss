@@ -24,9 +24,7 @@ export const createRealEstateService = async ({ address, ...body }: IRealEstateC
 };
 
 export const readRealEstateService = async (): Promise<IRealEstateRead> => {
-  return realEstateRead.parse(
-    await realEstateRepositorys.find({
-      relations: { address: true },
-    })
-  );
+  return await realEstateRepositorys.find({
+    relations: { address: true, category: true },
+  });
 };

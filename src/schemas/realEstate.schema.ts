@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { AddressSchema, addressCreate } from "./address.schema";
+import { CategoriesSchema } from "./categories.schema";
 
 export const RealEstateSchema = z.object({
   id: z.number().min(1),
@@ -16,12 +17,12 @@ export const realEstateCreate = RealEstateSchema.omit({ id: true, updatedAt: tru
 export const realEstateRead = z
   .object({
     address: AddressSchema,
-    createdAt: z.string(),
     id: z.number(),
     size: z.number(),
     sold: z.boolean(),
-    updatedAt: z.string(),
     value: z.string().or(z.number()),
-    categoryId: z.number().nullish(),
+    category: CategoriesSchema,
+    createdAt: z.string(),
+    updatedAt: z.string(),
   })
   .array();
